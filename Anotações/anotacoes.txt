@@ -1,0 +1,41 @@
+ Protocolo HTTP -> Protocolo de comunicação. Onde seria o protocolo que especifica como seria a comunicação entre um navegador e um servidor Web.
+ Protocolo HTTPS -> Seria basciamente o mesmo protocolo mas com mais segurança
+
+
+Get -> Leitura
+Post -> Criação
+Put -> Atualização
+Delete -> Delete
+Patch -> Atualização Parcial
+
+Query Params -> Só utiliza no método GET
+
+Route Params -> Get; Delete; Put
+
+Body Params -> Post ->quando quer enviar várias informações para o Servidor.
+
+CÓDIGOS HTTP
+✅ 2xx - Confirmação / Sucesso
+
+200 - Requisição realizada com sucesso
+
+201 - Criado - Requisição de criação realizada com sucesso
+
+⚠️ 4xx - Erro do cliente (front-end)
+
+400 - Bad Request
+
+401 - Unauthorized
+
+403 - Forbidden (Proibido)
+
+404 - Not Found (Não foi encontrado)
+
+❌ 5xx - Erro no servidor (falha ao concluir solicitação)
+
+500 - Internal Server Error
+
+502 - Bad Gateway
+
+
+
