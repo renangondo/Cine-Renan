@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { languages } from 'eslint-plugin-prettier'
 
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3',
