@@ -38,4 +38,4 @@ CÓDIGOS HTTP
 502 - Bad Gateway
 
 
-
+API -> Program que está rodando no servidor que conseguimos enviar e consumir informações do BackEnd.
