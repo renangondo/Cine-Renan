@@ -1,11 +1,14 @@
 import Button from '../../components/Button'
 import api from '../../services/api'
-import { Background, Poster, Info, Container, ContainerButton} from './styles'
+import { Background, Poster, Info, Container, ContainerButton } from './styles'
 import { useState, useEffect } from 'react'
+import Slider from '../../components/Slider'
+
 
 function Home() {
 
     const [movie, setMovie] = useState()
+    const [topMovies, setTopMovies] = useState()
 
     useEffect(() => {
 
@@ -14,8 +17,15 @@ function Home() {
             setMovie(results[1])
 
         }
-        console.log(movie)
+        async function getTopMovies() {
+            const { data: { results } } = await api.get('/movie/top_rated')
+            setTopMovies(results[0])
+
+        }
+
+
         getMovies()
+        getTopMovies
 
     }, [])
 
@@ -31,8 +41,8 @@ function Home() {
                             <h1>{movie.title}</h1>
                             <p>{movie.overview}</p>
                             <ContainerButton>
-                                <Button red = {true}>Assista Agora</Button>
-                                <Button red = {false}>Assista o Trailer</Button>
+                                <Button red={true}>Assista Agora</Button>
+                                <Button red={false}>Assista o Trailer</Button>
                             </ContainerButton>
                         </Info>
                         <Poster>
@@ -41,6 +51,7 @@ function Home() {
                     </Container>
                 </Background>
             )}
+            {topMovies && <Slider info={topMovies} title={'Top Filmes'}/>}
         </>
     )
 }
