@@ -3,6 +3,7 @@ import api from '../../services/api'
 import { Background, Poster, Info, Container, ContainerButton } from './styles'
 import { useState, useEffect } from 'react'
 import Slider from '../../components/Slider'
+import { getImages } from '../../utils/getImages'
 
 
 function Home() {
@@ -14,18 +15,18 @@ function Home() {
 
         async function getMovies() {
             const { data: { results } } = await api.get('/movie/popular')
-            setMovie(results[1])
+            setMovie(results[0])
 
         }
         async function getTopMovies() {
             const { data: { results } } = await api.get('/movie/top_rated')
-            setTopMovies(results[0])
+            setTopMovies(results)
 
         }
 
 
         getMovies()
-        getTopMovies
+        getTopMovies()
 
     }, [])
 
@@ -35,7 +36,7 @@ function Home() {
 
         <>
             {movie && (
-                <Background img={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
+                <Background img={getImages(movie.backdrop_path)}>
                     <Container>
                         <Info>
                             <h1>{movie.title}</h1>
@@ -46,7 +47,7 @@ function Home() {
                             </ContainerButton>
                         </Info>
                         <Poster>
-                            <img alt='capa-do-filme' src={`https://image.tmdb.org/t/p/original${movie.poster_path}}`} />
+                            <img alt='capa-do-filme' src={getImages(movie.backdrop_path)} />
                         </Poster>
                     </Container>
                 </Background>
